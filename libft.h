@@ -6,12 +6,25 @@
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 12:50:10 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/13 14:02:30 by jpringau         ###   ########.fr       */
+/*   Updated: 2017/11/13 18:08:44 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+typedef	struct	s_info
+{
+	int	nb;
+	int	index;
+}				t_info
+
+typedef	struct	s_list
+{
+	void	*content;
+	size_t	content_size;
+	struct	s_list	*next;
+}				t_list;
 
 int		ft_strlen(const char *str);
 char	*ft_strdup(char *s1);
@@ -52,4 +65,9 @@ void	ft_putnbr_fd(int n, int fd);
 void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
 char	**ft_strsplit(char const *s, char c);
+t_list	*ft_lstnew(void const *content, size_t content_size);
+void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void	ft_lstadd(t_list **alst, t_list *new);
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 #endif

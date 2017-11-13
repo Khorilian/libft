@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 12:51:59 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/13 17:16:14 by jpringau         ###   ########.fr       */
+/*   Created: 2017/11/13 17:13:25 by jpringau          #+#    #+#             */
+/*   Updated: 2017/11/13 17:45:29 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "libft.h"
 
-int	main()
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	char	**tabtab;
-	int		i;
+	ft_lsdel(alst->next, del);
+	ft_isdelone(&(alst), del);
 
-	i = 0;
-	tabtab = ft_strsplit("**Salut***les*gens**", '*');
-	if (tabtab == NULL)
-		return (0);
-	while (tabtab[i])
-	{
-		ft_putstr(tabtab[i]);
-		ft_putchar('\n');
-		i++;
-	}
-	return (0);
 }

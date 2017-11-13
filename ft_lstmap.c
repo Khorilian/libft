@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 12:51:59 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/13 17:16:14 by jpringau         ###   ########.fr       */
+/*   Created: 2017/11/13 18:09:15 by jpringau          #+#    #+#             */
+/*   Updated: 2017/11/13 18:39:56 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-int	main()
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char	**tabtab;
-	int		i;
+	t_list	nlist;
+	t_list	tmp;
+	void	*ncontent;
 
-	i = 0;
-	tabtab = ft_strsplit("**Salut***les*gens**", '*');
-	if (tabtab == NULL)
-		return (0);
-	while (tabtab[i])
+	tmp = lst;
+	nlist = (t_list)malloc(nlist);
+	while (tmp != NULL)
 	{
-		ft_putstr(tabtab[i]);
-		ft_putchar('\n');
-		i++;
+		ncontent = malloc(lst->content_size);
+		tmp = tmp->next;
 	}
-	return (0);
 }
