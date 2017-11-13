@@ -1,0 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/10 12:48:14 by jpringau          #+#    #+#             */
+/*   Updated: 2017/11/10 12:48:28 by jpringau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <string.h>
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	int	ibig;
+	int	ilittle;
+	int	save;
+
+	ibig = 0;
+	while (big[ibig] && ibig < len)
+	{
+		ilittle = 0;
+		if (big[ibig] == little[ilittle])
+		{
+			save = ibig;
+			while (big[ibig] == little[ilittle] && ibig < len)
+			{
+				if (little[ilittle + 1] == '\0')
+					return (&little[save]);
+				ibig++;
+				ilittle++;
+			}
+		}
+		ibig = save + 1;
+	}
+	return (0);
+}
