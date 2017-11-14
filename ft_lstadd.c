@@ -6,7 +6,7 @@
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:43:40 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/13 17:59:44 by jpringau         ###   ########.fr       */
+/*   Updated: 2017/11/14 14:20:52 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	new->next = &alst;
+	new->next = *alst;
 }

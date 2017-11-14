@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 12:40:55 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/14 14:50:40 by jpringau         ###   ########.fr       */
+/*   Created: 2017/11/14 11:19:38 by jpringau          #+#    #+#             */
+/*   Updated: 2017/11/14 15:57:46 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
+#include <stdlib.h>
 
-void	ft_putendl(char const *s)
+char	*ft_strtrim(char const *s)
 {
-	write(1, &s, ft_strlen(s));
-	write(1, "\n", 1);
+	int		i;
+	int		j;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	j = (ft_strlen(s) - 1);
+	while ((s[j] == ' ' || s[j] == '\n' || s[j] == '\t') && j >= 0)
+		j--;
+	if (j == -1)
+		return (NULL);
+	while ((s[i] == ' ' || s[i] == '\n' || s[i] == '\t') && s[i])
+		i++;
+	return (str = ft_strsub(s, i, (j - i + 1)));
 }

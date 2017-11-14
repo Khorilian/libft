@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 12:40:55 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/14 14:50:40 by jpringau         ###   ########.fr       */
+/*   Created: 2017/11/14 11:10:47 by jpringau          #+#    #+#             */
+/*   Updated: 2017/11/14 16:24:17 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	write(1, &s, ft_strlen(s));
-	write(1, "\n", 1);
+	int		i;
+	char	*cpy;
+
+	i = 0;
+	cpy = ft_strdup(s);
+	while (cpy[i])
+	{
+		f(cpy[i]);
+		i++;
+	}
+	return (cpy);
 }

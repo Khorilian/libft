@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 12:40:55 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/14 14:50:40 by jpringau         ###   ########.fr       */
+/*   Created: 2017/11/14 11:16:38 by jpringau          #+#    #+#             */
+/*   Updated: 2017/11/14 11:16:39 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
+#include <string.h>
 
-void	ft_putendl(char const *s)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	write(1, &s, ft_strlen(s));
-	write(1, "\n", 1);
+	return ((ft_strncmp(s1, s2, n) == 0) ? 1 : 0);
 }

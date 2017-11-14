@@ -6,7 +6,7 @@
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 12:51:59 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/13 17:16:14 by jpringau         ###   ########.fr       */
+/*   Updated: 2017/11/14 15:43:06 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,11 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int	main()
+int	main(void)
 {
-	char	**tabtab;
-	int		i;
+	char	*str;
 
-	i = 0;
-	tabtab = ft_strsplit("**Salut***les*gens**", '*');
-	if (tabtab == NULL)
-		return (0);
-	while (tabtab[i])
-	{
-		ft_putstr(tabtab[i]);
-		ft_putchar('\n');
-		i++;
-	}
+	str = ft_strtrim("  test n01 \n ");
+	ft_putstr(str);
 	return (0);
 }

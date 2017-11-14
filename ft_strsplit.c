@@ -6,12 +6,11 @@
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:59:02 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/13 16:21:57 by jpringau         ###   ########.fr       */
+/*   Updated: 2017/11/14 14:12:21 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-		#include <unistd.h>
 #include <string.h>
 #include "libft.h"
 
@@ -21,7 +20,7 @@ static	int		ft_countwords(char const *s, char c)
 	int		i;
 
 	i = 0;
-	nbword = 1;
+	nbword = 0;
 	while (s[i])
 	{
 		while (s[i] == c && s[i])
@@ -34,7 +33,7 @@ static	int		ft_countwords(char const *s, char c)
 	return (nbword);
 }
 
-static	void	ft_wordsize(char const *s, char c,int *wordtab)
+static	void	ft_wordsize(char const *s, char c, t_info *wordtab)
 {
 	int		i;
 	int		nbrword;
@@ -46,43 +45,16 @@ static	void	ft_wordsize(char const *s, char c,int *wordtab)
 		while (s[i] == c && s[i])
 			i++;
 		wordtab[nbrword].index = i;
-		while (s[i] != c && s[i])
+		wordtab[nbrword].nb = 0;
+		while (s[i] != c && s[i] != '\0')
 		{
 			wordtab[nbrword].nb++;
 			i++;
 		}
 		nbrword++;
 	}
-	wordtab[nbrword] = 0;
+	wordtab[nbrword].nb = 0;
 }
-
-//static	void	writing(char const *s, char **tabtab, char c)
-//{
-//	int		i;
-//	int		nbwords;
-//	int		is;
-//
-//	i = 0;
-//	nbwords = -1;
-//	is = 0;
-//	while (s[is])
-//	{
-//		if (s[is] != c)
-//		{
-//			nbwords++;
-//			while (s[is] != c)
-//			{
-//				tabtab[nbwords][i] = s[is];
-//				i++;
-//				is++;
-//			}
-//			tabtab[nbwords][i] = '\0';
-//			i = 0;
-//		}
-//		is++;
-//	}
-//	tabtab[nbwords + 1] = NULL;
-//}
 
 char			**ft_strsplit(char const *s, char c)
 {
@@ -91,13 +63,13 @@ char			**ft_strsplit(char const *s, char c)
 	int		i;
 	int		words;
 
-	words = ft_countwords(s, c); 
+	words = ft_countwords(s, c);
 	i = 0;
-	tabtab = (char**)malloc(sizeof(tabtab) * (words + 1));
-	wordtab = (int*)malloc(sizeof(wordtab) * (words + 1));
+	tabtab = (char**)malloc(sizeof(tabtab) * (words + 2));
+	wordtab = (t_info*)malloc(sizeof(wordtab) * (words + 2));
 	if (tabtab == NULL || wordtab == NULL)
 		return (NULL);
-	ft_wordsize(s,c, wordtab);
+	ft_wordsize(s, c, wordtab);
 	while (i < words)
 	{
 		tabtab[i] = ft_strsub(s, wordtab[i].index, wordtab[i].nb);
@@ -105,7 +77,7 @@ char			**ft_strsplit(char const *s, char c)
 			return (NULL);
 		i++;
 	}
-	writing (s, tabtab, c);
+	tabtab[i] = NULL;
 	free(wordtab);
 	return (tabtab);
 }

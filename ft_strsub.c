@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 12:40:55 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/14 14:50:40 by jpringau         ###   ########.fr       */
+/*   Created: 2017/11/14 11:17:01 by jpringau          #+#    #+#             */
+/*   Updated: 2017/11/14 15:15:06 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	write(1, &s, ft_strlen(s));
-	write(1, "\n", 1);
+	char		*cpy;
+	size_t		i;
+
+	i = 0;
+	cpy = ft_strnew(len);
+	if (cpy == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		cpy[i] = s[start];
+		start++;
+		i++;
+	}
+	cpy[i] = '\0';
+	return (cpy);
 }

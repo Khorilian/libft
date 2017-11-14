@@ -6,11 +6,11 @@
 /*   By: jpringau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 12:20:48 by jpringau          #+#    #+#             */
-/*   Updated: 2017/11/10 16:28:52 by jpringau         ###   ########.fr       */
+/*   Updated: 2017/11/14 16:06:23 by jpringau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static	int		convert(char *str, int i)
+static	int		convert(const char *str, int i)
 {
 	int		result;
 
